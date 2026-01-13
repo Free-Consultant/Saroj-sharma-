@@ -1,0 +1,11 @@
+def detect_syn_flood (packet):
+
+# Logic to count SYN packets and block suspicious IPs
+
+if packet.haslayer (TCP) and packet [TCP].flags == 'S':
+
+print (f"Potential attack detected from {packet[0][1].src}")
+
+# Start sniffing network traffic
+
+sniff(filter="tcp", prn=detect_syn_flood)
